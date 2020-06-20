@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>HOME PAGE</p>
+{% if user.is_authenticated %}
+<div style="text-align:center">Hi {{ user.username }}! Welcome to School Searcher</div>
+<p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock content %}

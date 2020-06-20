@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h1>Schools</h1>
+        <div class="list-group">
+            {% for school in schools %}
+            <a href="{% url 'school-detail' school.id %}">
+                <div class="card p-3 col-4 col-md-4 col-lg-4">
+                    <div class="card-wrapper ">
+                        <div class="card-img">
+                            <div class="mbr-overlay"></div>
+                            <div class="mbr-section-btn text-center">
+                                <a href="{% url 'school-detail' school.id %}" class="btn btn-primary display-4">Learn
+                                    More</a>
+                            </div>
+                            <img class="pt-4 pb-4 img-rounded" style="width:100%" src="{{ school.image.url }}"
+                                alt="school image">
+                        </div>
+                        <div class="card-box">
+                            <h4 class="card-title mbr-fonts-style display-7">
+                                {{ school.name }}
+                            </h4>
+                            <p class="mbr-text mbr-fonts-style align-left display-7">
+                                {{ school.address }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% empty %}
+            <p>No schools yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
